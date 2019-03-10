@@ -37,4 +37,9 @@ create main layout view: main.blade.php:
 
 Pulling CSS and JS
 
+## Lesson 14 - 19
+
+Creating Navbar and footer
+
+
 

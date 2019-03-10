@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('test');
+    return view('layouts.auth');
 });
 
 Auth::routes();

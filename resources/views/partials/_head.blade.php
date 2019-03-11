@@ -2,6 +2,7 @@
 	<meta charset="UTF-8">
 	<meta name="description" content="SEKS Web App">
 	<meta name="author" content="Ilyos Xizr">
+	<meta name="viewport" content="width=device-width">
 
 	<title>Smart Expense Keeping System</title>
 	<!-- Scripts -->

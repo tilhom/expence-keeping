@@ -1,0 +1,28 @@
+diff --git a/database/migrations/2014_10_12_000000_create_users_table.php b/database/migrations/2014_10_12_000000_create_users_table.php
+index 4a3ba47..db74b0c 100644
+--- a/database/migrations/2014_10_12_000000_create_users_table.php
++++ b/database/migrations/2014_10_12_000000_create_users_table.php
+@@ -15,10 +15,23 @@ class CreateUsersTable extends Migration
+     {
+         Schema::create('users', function (Blueprint $table) {
+             $table->bigIncrements('id');
++            $table->integer('parent_id')->unsigned()->default(0);
+             $table->string('name');
+             $table->string('email')->unique();
+             $table->timestamp('email_verified_at')->nullable();
+             $table->string('password');
++            $table->string('phone');
++            $table->integer('country');
++            $table->integer('state');
++            $table->string('city');
++            $table->text('address');
++            $table->string('post_code');
++            $table->string('logo');
++            $table->enum('status',['off','on'])->deafult('off');
++            $table->integer('company_id')->unsigned()->nullable();
++            $table->integer('role')->unsigned()->default(1);
++            $table->text('access')->nullable();
++
+             $table->rememberToken();
+             $table->timestamps();
+         });

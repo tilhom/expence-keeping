@@ -45,5 +45,7 @@ Creating Navbar and footer
 
 Creating Login form
 
+## Lesson Protecting the Application 00:05:01
+
 
 

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="#">S.E.K.S.</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,10 +7,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Change Company <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{route('companies.index')}}">Change Company <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Departs. & Periods</a>
+        <a class="nav-link" href="{{route('categories-periods.index')}}">Departs. & Periods</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Budgets</a>
@@ -38,10 +38,19 @@
           <i class="fa fa-cog" aria-hidden="true"></i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Name</a>
+          <a class="dropdown-item" href="#">{{ Auth::user()->name }} <span class="caret"></span></a>
           <a class="dropdown-item" href="#">Profile</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Logout</a>
+          <!-- <a class="dropdown-item" href="#">Logout</a> -->
+           <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                              document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
         </div>
       </li>
     </ul>

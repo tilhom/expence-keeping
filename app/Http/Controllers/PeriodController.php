@@ -23,7 +23,7 @@ class PeriodController extends Controller
      */
     public function create()
     {
-        //
+        return view('periods.create');
     }
 
     /**

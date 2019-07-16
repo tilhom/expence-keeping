@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePeriodRequest;
+use App\Period;
 use Illuminate\Http\Request;
 
 class PeriodController extends Controller
@@ -32,9 +34,12 @@ class PeriodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePeriodRequest $request)
     {
-        //
+        // dd($request);
+        Period::create($request->all());
+        return redirect()->route('categories-periods.index')
+                ->with('success',"Period created");
     }
 
     /**
@@ -56,7 +61,9 @@ class PeriodController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['period'] = Period::find($id);
+        // dd($data);
+        return view('periods.edit', $data);
     }
 
     /**
@@ -66,9 +73,13 @@ class PeriodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreatePeriodRequest $request, $id)
     {
-        //
+        Period::find($id)->update([
+            'from' => $request->from,
+            'to' => $request->to
+        ]);
+        return redirect()->route('categories-periods.index')->with('success','Period edited!');
     }
 
     /**
@@ -77,8 +88,10 @@ class PeriodController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Period::find($id)->delete();
+        return redirect()->route('categories-periods.index')
+                ->with('success', 'Period deleted');
     }
 }

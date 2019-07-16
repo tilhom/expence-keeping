@@ -19,3 +19,27 @@
 	</div>
 </div>
 @endsection
+
+@section('script')
+<script type="text/javascript">
+	$(function(){
+		$('#from').datepicker({
+			defaultDate:"-1w",
+			changeMonth: true,
+			dateFormat:"yy-mm-dd",
+			onClose: function(selectedDate){
+				$('#to').datepicker("option","minDate",selectedDate);
+			}
+		});
+		$('#to').datepicker({
+			defaultDate:"+1w",
+			dateFormat:"yy-mm-dd",
+			onClose: function(selectedDate){
+				$('#from').datepicker("option","maxDate",selectedDate);
+			}
+		});
+	})
+
+</script>
+
+@endsection

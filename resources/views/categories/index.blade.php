@@ -12,7 +12,7 @@
 			<td>{{$category->name}}</td>
 			<td>
 				<a href="{{route('categories.edit',$category->id)}}">[ ! ]</a>
-				<a href="{{route('categories.destroy',$category->id)}}">[ # ]</a>
+				<a href="{{route('categories.delete',$category->id)}}">[ # ]</a>
 			</td>
 		</tr>
 		@endforeach

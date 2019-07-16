@@ -61,7 +61,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['category'] = Category::find($id);
+        return view('categories.edit', $data);
     }
 
     /**
@@ -71,9 +72,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateCategoryRequest $request, $id)
     {
-        //
+        $category=Category::find($id);
+        $category->update(['name' => $request->name]);
+        return redirect()
+                ->route('categories-periods.index')
+                ->with('success', 'Category updated');
     }
 
     /**
@@ -82,8 +87,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        Category::find($id)->delete();
+        return redirect()->route('categories-periods.index')
+                ->with('success', 'Category deleted');
     }
 }

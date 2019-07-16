@@ -25,4 +25,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+
+    public static function format_date($date)
+    {
+        return date('F d, Y', strtotime($date));
+    }
 }

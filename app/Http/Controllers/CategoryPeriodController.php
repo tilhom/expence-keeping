@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Period;
 use Illuminate\Http\Request;
 
 class CategoryPeriodController extends Controller
@@ -12,6 +13,8 @@ class CategoryPeriodController extends Controller
     {
         $this->middleware('auth');
         $this->categories = new Category();
+        $this->periods = new Period();
+
     }
     /**
      * Display a listing of the resource.
@@ -24,6 +27,7 @@ class CategoryPeriodController extends Controller
             ->orderBy('name')
             ->where('company_id', auth()->user()->company_id)
             ->get();
+        $data['periods'] = $this->periods->get();
         return view('categories-periods.index',$data);
     }
 
